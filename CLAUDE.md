@@ -31,6 +31,16 @@ It has two jobs that must never fight each other:
 | CRT monitor frame | TBD | Bezel around the screen |
 | Achievement badges | 32×32 each | One per achievement |
 | Start button / taskbar art | TBD | Win98-style |
+| Room — hideout wall | TBD | Salvaged wasteland hideout behind the desk |
+| Room — desk | TBD | The desk the CRT sits on |
+| Room — desk lamp | TBD | Two states: on / off |
+| Room — old radio | TBD | Click opens the Music Player |
+| Room — polaroids | TBD | Click opens the Field Journal |
+| Room — sticky notes | TBD | On the bezel; click opens Find Me |
+| Room — shelf + 3D printed figure | TBD | Flavor / secret |
+| Room — toy dirt bike | TBD | Flavor / secret |
+| Room — window sky | TBD | Four states: sunrise, day, sunset, stars (real Mountain Time) |
+| Room — set of keys | TBD | Key-hunt prop |
 
 Wallpaper layers are separate so the interactive (mouse parallax) version can be added later without redrawing.
 
@@ -57,6 +67,28 @@ Taskbar: start button, open-window buttons, clock, small mascot spot.
 ## Hidden layer (later phase)
 
 A *Welcome to the Game*–style key hunt: hidden files and clues spread across the desktop, retro horror touches (glitches, rare creepy events). Recruiters should never need to touch it.
+
+## The Room (Phase 5)
+
+The area outside the CRT becomes a room: the computer sits on a pixel art desk in a salvaged wasteland hideout — the Fallout / Stalker / Metro flavor from the art direction, made real. The room is a frame around the desktop, not a replacement for it: everything important still lives on the desktop, so the room is entirely optional for recruiters.
+
+Clickable objects:
+
+- **Desk lamp** — turns the room lights off: the CRT glows in the dark, the site switches to a creepier horror mode, and that mode leads into the hidden key hunt.
+- **Old radio** on the desk — opens the Music Player.
+- **Stack of polaroids** — opens the Field Journal.
+- **Sticky notes** on the monitor bezel — open Find Me.
+- **Shelf** with small items (3D printed figure, toy dirt bike) — flavor and hidden secrets.
+- **Window** behind the desk — the New Mexico sky, changing with the real time of day in Mountain Time (sunrise, day, sunset, stars).
+- **A set of keys** — part of the hidden key hunt.
+
+Rules:
+
+- Room objects are shortcuts to windows that already exist on the desktop (radio → Music Player, polaroids → Field Journal, sticky notes → Find Me). The desktop stays the source of truth; the room adds atmosphere and secrets, never required content.
+- Horror mode (lamp) is the on-ramp into the key hunt. It must never block access to the desktop or Quick View — the lights can always be turned back on, restoring normal mode at any time.
+- The window sky is flavor: it reads the visitor's local clock, converts to Mountain Time, and picks the sky state. Nothing important depends on it.
+- Hidden on phones: at small screens the CRT fills the viewport and the room is not drawn at all.
+- All room art starts as labeled placeholders (name + pixel size), swappable via `/assets/` like everything else.
 
 ## Must-haves for quality
 
@@ -90,4 +122,5 @@ A *Welcome to the Game*–style key hunt: hidden files and clues spread across t
 2. **Content** — fill windows from the data files: About, Projects, Games, Art, Commissions, Streams, School, Find Me, Achievements, Field Journal, My Corner.
 3. **Polish** — CRT flicker/boot animation, music player, frog assistant tips, giscus comments, custom domain.
 4. **Interactive** — layered parallax wallpaper, clickable wallpaper events, achievement popups.
-5. **Secrets** — key hunt, horror easter eggs, creepy frog.
+5. **The Room** — the wasteland hideout around the CRT: desk, lamp (horror-mode on-ramp), radio, polaroids, sticky notes, shelf, Mountain-Time sky window, key-hunt keys. Hidden on phones; room art as labeled placeholders.
+6. **Secrets** — key hunt, horror easter eggs, creepy frog.

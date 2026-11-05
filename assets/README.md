@@ -23,6 +23,28 @@ Layers render in the order above (sky at the back). The wallpaper placeholder hi
 
 `frog.png` — idle frame. Talking frames later (Phase 3).
 
+## The Room (Phase 5) — sizes TBD until the room layout is drawn
+
+The room the CRT sits in (salvaged wasteland hideout). File names below are suggestions — they lock in when Phase 5 is built.
+
+| File | Purpose |
+|---|---|
+| `room-wall.png` | Hideout wall / background |
+| `room-desk.png` | The desk |
+| `room-lamp-on.png` / `room-lamp-off.png` | Desk lamp states (off = lights out, horror mode) |
+| `room-radio.png` | Old radio (opens the Music Player) |
+| `room-polaroids.png` | Polaroid stack (opens the Field Journal) |
+| `room-sticky-notes.png` | Sticky notes on the bezel (opens Find Me) |
+| `room-shelf.png` | Shelf with the 3D printed figure |
+| `room-dirtbike.png` | Toy dirt bike |
+| `room-window-sunrise.png` | Window sky — sunrise |
+| `room-window-day.png` | Window sky — day |
+| `room-window-sunset.png` | Window sky — sunset |
+| `room-window-night.png` | Window sky — stars |
+| `room-keys.png` | The key-hunt keys |
+
+All room art starts as labeled placeholders. The room is hidden on phones.
+
 ## Not wired up yet
 
 - CRT monitor frame (size TBD)
