@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>knoxler.net — Everything Knoxler</title>
+  <meta name="description" content="Knoxler's personal portfolio: projects, games, art, commissions, streams, reviews, and more.">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self' https://giscus.app; frame-src 'self' https://giscus.app; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%2339ff8e'/><rect x='4' y='4' width='8' height='8' fill='%23221a4a'/></svg>">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="desktop-page">
+  <div class="crt">
+    <div class="crt-bezel-top">
+      <span class="crt-brand">CRT MONITOR — TBD</span>
+      <span class="crt-led" aria-hidden="true"></span>
+    </div>
+
+    <div class="screen" id="screen">
+      <!-- Wallpaper: 4 layers per CLAUDE.md. Layers stack; placeholder hides once all four exist. -->
+      <div class="wallpaper" aria-hidden="true">
+        <div class="wallpaper-layer" data-asset="wallpaper-sky"></div>
+        <div class="wallpaper-layer" data-asset="wallpaper-mountains"></div>
+        <div class="wallpaper-layer" data-asset="wallpaper-midground"></div>
+        <div class="wallpaper-layer" data-asset="wallpaper-foreground"></div>
+        <div class="wallpaper-placeholder" id="wallpaper-placeholder">
+          <div class="ph-box ph-wallpaper">
+            <span class="ph-name">WALLPAPER — 480×270</span>
+            <span class="ph-note">4 layers: sky · mountains · midground · foreground</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop icons: names stay plain and obvious -->
+      <div class="icons" role="group" aria-label="Desktop folders">
+        <button type="button" class="icon" data-window="about">
+          <span class="icon-box ph-box" data-asset="icon-about">32×32</span>
+          <span class="icon-name">About Me</span>
+        </button>
+        <button type="button" class="icon" data-window="projects">
+          <span class="icon-box ph-box" data-asset="icon-projects">32×32</span>
+          <span class="icon-name">Projects</span>
+        </button>
+        <button type="button" class="icon" data-window="games">
+          <span class="icon-box ph-box" data-asset="icon-games">32×32</span>
+          <span class="icon-name">Games</span>
+        </button>
+        <button type="button" class="icon" data-window="art">
+          <span class="icon-box ph-box" data-asset="icon-art">32×32</span>
+          <span class="icon-name">Art</span>
+        </button>
+        <button type="button" class="icon" data-window="commissions">
+          <span class="icon-box ph-box" data-asset="icon-commissions">32×32</span>
+          <span class="icon-name">Commissions</span>
+        </button>
+        <button type="button" class="icon" data-window="streams">
+          <span class="icon-box ph-box" data-asset="icon-streams">32×32</span>
+          <span class="icon-name">Streams</span>
+        </button>
+        <button type="button" class="icon" data-window="reviews">
+          <span class="icon-box ph-box" data-asset="icon-reviews">32×32</span>
+          <span class="icon-name">Reviews</span>
+        </button>
+        <button type="button" class="icon" data-window="school">
+          <span class="icon-box ph-box" data-asset="icon-school">32×32</span>
+          <span class="icon-name">School</span>
+        </button>
+        <button type="button" class="icon" data-window="achievements">
+          <span class="icon-box ph-box" data-asset="icon-achievements">32×32</span>
+          <span class="icon-name">Achievements</span>
+        </button>
+        <button type="button" class="icon" data-window="journal">
+          <span class="icon-box ph-box" data-asset="icon-journal">32×32</span>
+          <span class="icon-name">Field Journal</span>
+        </button>
+        <button type="button" class="icon" data-window="corner">
+          <span class="icon-box ph-box" data-asset="icon-corner">32×32</span>
+          <span class="icon-name">My Corner</span>
+        </button>
+        <button type="button" class="icon" data-window="findme">
+          <span class="icon-box ph-box" data-asset="icon-find-me">32×32</span>
+          <span class="icon-name">Find Me</span>
+        </button>
+        <button type="button" class="icon" data-window="music">
+          <span class="icon-box ph-box" data-asset="icon-music">32×32</span>
+          <span class="icon-name">Music Player</span>
+        </button>
+        <button type="button" class="icon" data-window="recycle">
+          <span class="icon-box ph-box" data-asset="icon-recycle">32×32</span>
+          <span class="icon-name">Recycle Bin</span>
+        </button>
+      </div>
+
+      <!-- Frog assistant (tips arrive in Phase 3) -->
+      <div class="frog ph-box" data-asset="frog" aria-hidden="true">FROG — 64×64</div>
+
+      <!-- Taskbar: part of the fake desktop -->
+      <nav class="taskbar" id="taskbar" aria-label="Taskbar">
+        <button type="button" class="start" id="start-button" aria-haspopup="true" aria-expanded="false">
+          <span class="start-dot" aria-hidden="true"></span><span class="start-label">Start</span>
+        </button>
+
+        <div class="start-menu" id="start-menu" hidden>
+          <div class="start-menu-banner" aria-hidden="true">KNOXLER.NET</div>
+          <div id="start-menu-folders"></div>
+          <hr class="start-sep">
+          <div id="start-menu-system"></div>
+        </div>
+
+        <div class="taskbar-windows" id="taskbar-windows" aria-label="Open windows"></div>
+
+        <a class="quickview" href="quick.html">Quick View</a>
+
+        <span class="tray">
+          <span class="tray-label" aria-hidden="true">KNOX</span>
+          <span id="clock"></span>
+        </span>
+      </nav>
+
+      <!-- Windows open here -->
+      <div class="windows" id="windows"></div>
+    </div>
+
+    <div class="crt-bezel-bottom" aria-hidden="true">KNOX–98</div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
