@@ -1,0 +1,14 @@
+{
+  "intro": "Example text — a line or two about your streams. Replace this.",
+  "channels": [
+    { "label": "Twitch", "url": "https://twitch.tv/example" },
+    { "label": "YouTube", "url": "https://youtube.com/@example" }
+  ],
+  "clips": [
+    {
+      "title": "Example Clip (fake)",
+      "note": "A favorite moment — replace with a real clip.",
+      "url": "https://clips.example/example-clip"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "title": "Example Trip (fake)",
+      "image": "assets/journal/example-trip.png",
+      "note": "Example travel photo note — replace with a real trip."
+    },
+    {
+      "title": "Example Camp (fake)",
+      "image": "assets/journal/example-camp.png",
+      "note": "Second example — delete or replace."
+    }
+  ]
+}

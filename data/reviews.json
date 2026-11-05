@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "game": "Example Game (fake)",
+      "take": "One or two sentences — your honest take. Replace this.",
+      "link": "https://example.com/review-example-game",
+      "cover": "assets/reviews/example-game-cover.png",
+      "rating": 8,
+      "date": "2026-01-15"
+    },
+    {
+      "game": "Another Game (fake)",
+      "take": "Second example — delete or replace.",
+      "link": "https://example.com/review-another-game"
+    }
+  ]
+}

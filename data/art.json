@@ -1,0 +1,14 @@
+{
+  "art": [
+    {
+      "title": "Example Piece (fake)",
+      "image": "assets/art/example-piece.png",
+      "note": "Example note — replace with real art."
+    },
+    {
+      "title": "Another Example (fake)",
+      "image": "assets/art/another-example.png",
+      "note": "Second example — delete or replace."
+    }
+  ]
+}

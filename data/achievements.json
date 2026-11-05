@@ -1,0 +1,20 @@
+{
+  "achievements": [
+    {
+      "name": "First Pixel (fake)",
+      "description": "Made the first piece of game art.",
+      "points": 100,
+      "badge": "assets/badges/first-pixel.png",
+      "category": "Art"
+    },
+    {
+      "name": "Road Trip (fake)",
+      "description": "A locked future goal — example hint below.",
+      "points": 200,
+      "badge": "assets/badges/road-trip.png",
+      "category": "Life",
+      "locked": true,
+      "hint": "Hint hint hint — replace with a real hint."
+    }
+  ]
+}

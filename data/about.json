@@ -1,0 +1,14 @@
+{
+  "intro": [
+    "Example text — replace with your real intro. One or two short paragraphs are perfect.",
+    "Example text — this second paragraph is fake too. Delete it or keep two of your own."
+  ],
+  "skills": [
+    "Example Skill (fake)",
+    "Another Example Skill (fake)"
+  ],
+  "resume": {
+    "label": "Resume (PDF)",
+    "url": "assets/resume.pdf"
+  }
+}

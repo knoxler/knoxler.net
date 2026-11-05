@@ -1,0 +1,27 @@
+{
+  "projects": [
+    {
+      "title": "Example Project (fake)",
+      "description": "Example description — replace with a real project.",
+      "role": "What I did (fake example).",
+      "screenshot": "assets/screenshots/example-project.png",
+      "tech": ["JavaScript", "HTML/CSS"],
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/example/example-project" },
+        { "label": "Live demo", "url": "https://example.com/demo" }
+      ],
+      "playable": false
+    },
+    {
+      "title": "Another Example (fake)",
+      "description": "Second example entry — delete or replace.",
+      "role": "What I did (fake example).",
+      "screenshot": "assets/screenshots/another-example.png",
+      "tech": ["Python"],
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/example/another-example" }
+      ],
+      "playable": true
+    }
+  ]
+}

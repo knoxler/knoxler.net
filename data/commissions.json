@@ -1,0 +1,14 @@
+{
+  "intro": "Example text — say what you're open to commissioning (pixel art, sprites, etc.). Replace this.",
+  "examples": [
+    {
+      "title": "Example Commission (fake)",
+      "image": "assets/commissions/example.png",
+      "note": "Example commission piece — delete or replace."
+    }
+  ],
+  "contact": {
+    "label": "Ask about commissions",
+    "url": "https://ko-fi.com/example"
+  }
+}

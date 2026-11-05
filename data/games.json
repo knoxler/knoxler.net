@@ -1,0 +1,24 @@
+{
+  "games": [
+    {
+      "title": "Example Game (fake)",
+      "description": "Example game blurb — replace with a real game.",
+      "role": "Art (fake example) — sprites, menus, pixel art.",
+      "screenshot": "assets/screenshots/example-game.png",
+      "tech": ["Unity", "C#"],
+      "links": [
+        { "label": "itch.io", "url": "https://example.itch.io/example-game" }
+      ],
+      "comingSoon": false
+    },
+    {
+      "title": "Upcoming Game (fake)",
+      "description": "Coming soon teaser — delete or replace.",
+      "role": "Art (fake example).",
+      "screenshot": "assets/screenshots/upcoming-game.png",
+      "tech": [],
+      "links": [],
+      "comingSoon": true
+    }
+  ]
+}

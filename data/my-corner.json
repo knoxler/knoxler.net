@@ -1,0 +1,14 @@
+{
+  "things": [
+    {
+      "title": "Favorite Repo (fake)",
+      "note": "Why it's cool — replace with a real repo.",
+      "url": "https://github.com/example/repo"
+    },
+    {
+      "title": "Favorite Game (fake)",
+      "note": "A game worth playing — replace with a real game.",
+      "url": "https://store.steampowered.com/app/example"
+    }
+  ]
+}
