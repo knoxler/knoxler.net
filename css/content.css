@@ -1,0 +1,463 @@
+/* ============================================================
+   knoxler.net — Phase 2: window + Quick View content styles
+   Reuses the design tokens defined in main.css (:root).
+   ============================================================ */
+
+/* Content wrapper that each render file fills */
+.window-content {
+  display: block;
+}
+
+/* Desktop: keep tall windows inside the screen, scroll the body only */
+@media (min-width: 721px) {
+  .window {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 8px);
+  }
+  .window-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
+/* ---------- loading / empty / data-error ---------- */
+
+.loading {
+  margin: 0;
+  font-style: italic;
+  font-size: 13px;
+  color: #6a5f95;
+}
+
+.empty-msg {
+  margin: 0;
+  font-size: 13px;
+  color: #6a5f95;
+}
+
+.data-error {
+  margin: 0;
+  padding: 12px 14px;
+  background: #fff4f6;
+  border: 2px solid #d8a9b6;
+  color: #7a3348;
+  font-size: 13px;
+}
+
+.data-error p {
+  margin: 0 0 8px;
+}
+
+.data-error p:last-child {
+  margin: 0;
+}
+
+.data-error-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ---------- generic card (Projects, Games, Commissions, …) ---------- */
+
+.card {
+  position: relative;
+  background: #fff;
+  border: 2px solid #d8d2ee;
+  box-shadow: 2px 2px 0 rgba(92, 83, 130, 0.12);
+  padding: 12px;
+  margin: 0 0 12px;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card-role {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4a3f78;
+}
+
+.card-desc {
+  margin: 0 0 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #3a3260;
+}
+
+.card-date {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #8a80b5;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+/* ---------- badges ---------- */
+
+.badge {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.badge-soon {
+  background: #fff0c9;
+  color: #7a5a12;
+  border: 1px solid #e0c57a;
+}
+
+.badge-playable {
+  background: #dcffe9;
+  color: #1f6b3a;
+  border: 1px solid #9ad3ae;
+}
+
+.badge-rating {
+  background: #dcf4ff;
+  color: #1c5f7a;
+  border: 1px solid #93cde3;
+}
+
+/* ---------- tech chips ---------- */
+
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 8px;
+}
+
+.tech-chip {
+  padding: 2px 8px;
+  border: 1px solid #c9c1e8;
+  border-radius: 12px;
+  background: #efeafb;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4a3f78;
+}
+
+/* ---------- link buttons ---------- */
+
+.link-row,
+.link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.link-row a,
+.link-grid a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #fff;
+  border: 2px solid;
+  border-color: var(--face-hi) var(--face-dk) var(--face-dk) var(--face-hi);
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a2b7d;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link-row a:active,
+.link-grid a:active {
+  border-color: var(--face-dk) var(--face-hi) var(--face-hi) var(--face-dk);
+}
+
+a.link-external::before {
+  content: "\2197"; /* ↗ external — new tab */
+}
+
+a.link-internal::before {
+  content: "\203A"; /* › same site */
+}
+
+/* ---------- images inside content ---------- */
+
+.img-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  border: 2px solid #d8d2ee;
+  background: #faf9fe;
+  overflow: hidden;
+  margin: 0 0 10px;
+}
+
+.content-img {
+  width: 100%;
+  height: 100%;
+  max-height: 170px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.content-ph {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 10px;
+}
+
+/* ---------- image viewer (Art, Field Journal) ---------- */
+
+.viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.viewer-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  border: 2px solid #d8d2ee;
+  background: #faf9fe;
+  overflow: hidden;
+}
+
+.viewer-img .content-img {
+  max-height: 340px;
+}
+
+.viewer-img .content-ph {
+  width: 100%;
+  min-height: 220px;
+}
+
+.viewer-caption {
+  text-align: center;
+}
+
+.viewer-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.viewer-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #6a5f95;
+}
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.viewer-btn {
+  width: 36px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4a2b7d;
+  background: #fff;
+  border: 2px solid;
+  border-color: var(--face-hi) var(--face-dk) var(--face-dk) var(--face-hi);
+  cursor: pointer;
+}
+
+.viewer-btn:active {
+  border-color: var(--face-dk) var(--face-hi) var(--face-hi) var(--face-dk);
+}
+
+.viewer-counter {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  color: #6a5f95;
+}
+
+/* ---------- achievements ---------- */
+
+.ach-header {
+  margin: 0 0 14px;
+  padding: 14px;
+  text-align: center;
+  background: linear-gradient(135deg, #efeafb, #dcf4ff);
+  border: 2px solid #c9c1e8;
+}
+
+.ach-total {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  color: #3a2f6b;
+}
+
+.ach-total-label {
+  margin-top: 5px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #6a5f95;
+}
+
+.ach-cat {
+  margin: 0 0 14px;
+}
+
+.ach-cat-title {
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #c9c1e8;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a3f78;
+}
+
+.ach-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ach-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  border-bottom: 1px solid #ece7fa;
+}
+
+.ach-item .img-slot {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+}
+
+.ach-item .content-img {
+  width: 44px;
+  max-height: 44px;
+}
+
+.ach-item .content-ph {
+  width: 44px;
+  min-height: 44px;
+  padding: 4px;
+}
+
+.ach-item .content-ph .ph-name {
+  font-size: 8px;
+}
+
+.ach-item .content-ph .ph-note {
+  display: none;
+}
+
+.ach-item.is-locked {
+  opacity: 0.55;
+}
+
+.ach-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.ach-name {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ach-desc {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #4a4170;
+}
+
+.ach-hint {
+  margin: 2px 0 0;
+  font-size: 11px;
+  font-style: italic;
+  color: #8a6d2b;
+}
+
+.ach-points {
+  flex: none;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3a2f6b;
+}
+
+/* ---------- simple document layouts (About, School, …) ---------- */
+
+.doc-para {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3a3260;
+}
+
+.fine-note {
+  margin: 8px 0 0;
+  font-size: 11px;
+  font-style: italic;
+  color: #8a80b5;
+}
+
+/* ---------- Quick View fills ---------- */
+
+.quick-fill {
+  display: block;
+}
+
+.quick-fill ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.quick-fill li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e9e5f6;
+  font-size: 13px;
+}
+
+.quick-fill li:last-child {
+  border-bottom: 0;
+}
+
+.quick-fill li strong {
+  font-weight: 700;
+  color: #3a2f6b;
+}
+
+.quick-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #6a5f95;
+}
+
+.quick-fill a {
+  font-weight: 700;
+  color: #4a2b7d;
+  text-decoration: underline;
+}

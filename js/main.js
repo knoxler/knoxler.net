@@ -332,12 +332,46 @@
     openWindows.delete(id);
   }
 
+  // The image viewer (Esc) asks its window to close via this bubbling event.
+  windowsLayer.addEventListener('knox:close', (e) => {
+    const win = e.target && e.target.closest ? e.target.closest('.window') : null;
+    if (win && win.dataset.window) closeWindow(win.dataset.window);
+  });
+
+  // window id -> data file (folder ids and file names don't always match:
+  // journal->field-journal, corner->my-corner, findme->find-me)
+  const DATA_MAP = {
+    about: 'about.json',
+    projects: 'projects.json',
+    games: 'games.json',
+    art: 'art.json',
+    commissions: 'commissions.json',
+    streams: 'streams.json',
+    reviews: 'reviews.json',
+    school: 'school.json',
+    achievements: 'achievements.json',
+    journal: 'field-journal.json',
+    corner: 'my-corner.json',
+    findme: 'find-me.json',
+  };
+
   function showFolder(folder) {
     if (openWindows.has(folder.id)) {
       restore(folder.id);
       return;
     }
-    createWindow(folder.id, folder.title, comingSoonBody());
+    const K = window.Knox;
+    const renderFn = K && K.render ? K.render[folder.id] : null;
+    const dataName = DATA_MAP[folder.id];
+    const container = document.createElement('div');
+    container.className = 'window-content';
+    if (renderFn && dataName) {
+      K.renderInto(container, dataName, renderFn);
+    } else {
+      // No content yet (Music Player, Recycle Bin) — keep the coming-soon body.
+      container.append(comingSoonBody());
+    }
+    createWindow(folder.id, folder.title, container);
   }
 
   function openSettings() {
