@@ -1,0 +1,93 @@
+# knoxler.net — Project Brief
+
+This file is the plan for knoxler.net. Read it fully before making changes, and keep it updated when decisions change.
+
+## What this is
+
+knoxler.net is Knoxler's personal portfolio and "own corner of the internet." It is built as a fake retro computer: a CRT monitor on screen, with a working Windows 98–style desktop inside it. Visitors click folders and icons to open windows, the way you'd explore a real old PC. Inspiration for the explore-the-desktop feeling: the game *Heaven Does Not Respond*.
+
+It has two jobs that must never fight each other:
+1. **Professional** — recruiters and clients can find projects, art, resume, and contact info fast and without confusion.
+2. **Fun** — it feels like a game: pixel art, CRT flicker, a frog assistant, achievements, and a hidden easter-egg hunt.
+
+## Art direction
+
+- Style: 90s retro desktop (Windows 98, but way better), pastel + neon colors, light post-apocalyptic "salvaged terminal" flavor (think Fallout / Stalker / Metro mood). Horror is a core part of who Knoxler is (horror streamer and horror game reviewer), so retro/analog horror shows up openly in the Streams and Reviews windows and heavily in the hidden layer, while the main desktop stays welcoming and easy to use.
+- The wasteland vibe is **flavor only** (visuals, sounds, secrets). Icon and window names stay plain and obvious (Projects, Art, Commissions, etc.).
+- **All art is Knoxler's own.** Never use logos, sprites, or assets from other games or companies.
+- **Every art spot starts as a placeholder**: a box with a dashed border showing the asset name and exact pixel size (e.g. `WALLPAPER — 480×270`). Art must be swappable by replacing a file in `/assets/`, with no code changes.
+- Pixel art must render crisp: use `image-rendering: pixelated` and integer scaling.
+
+### Art needed (placeholders until Knoxler draws them)
+
+| Asset | Size | Notes |
+|---|---|---|
+| Wallpaper — sky layer | 480×270 | Pastel/neon New Mexico desert dusk |
+| Wallpaper — mountains layer | 480×270 | Transparent PNG |
+| Wallpaper — midground layer | 480×270 | Abandoned gas station, neon sign. Transparent PNG |
+| Wallpaper — foreground layer | 480×270 | Fence, cactus, tumbleweed. Transparent PNG |
+| Desktop icons | 32×32 each | One per desktop item |
+| Frog assistant sprite | 64×64 | Idle + talking frames later |
+| CRT monitor frame | TBD | Bezel around the screen |
+| Achievement badges | 32×32 each | One per achievement |
+| Start button / taskbar art | TBD | Win98-style |
+
+Wallpaper layers are separate so the interactive (mouse parallax) version can be added later without redrawing.
+
+## Desktop contents
+
+- **About Me** — opens like a text document. Short intro + link to resume PDF.
+- **Projects** — programming work. Each project opens its own window: description, screenshots/GIF, what Knoxler did, GitHub link. Web-playable projects can run inside the window.
+- **Games** — games Knoxler has worked on as the artist (with a game dev partner). Screenshots, clips, blurb, and Knoxler's role. Upcoming games get a "coming soon" teaser. Downloads link out to itch.io — **never host .exe files on this site.**
+- **Art** — image-viewer style gallery.
+- **Commissions** — example pieces, what's offered, how to reach out. Payments handled off-site (Ko-fi or VGen link). The site never touches payment info.
+- **Streams** — Twitch and YouTube channels and favorite clips. Knoxler is a horror streamer, so this window leans into that (horror-themed styling, favorite horror streams/clips).
+- **Reviews** — Knoxler's horror game reviews and coverage as a creator on Keymailer. Each review gets a card (game, short take, link to the full review or VOD). This is professional work: it shows Knoxler's eye for games and the relationships with studios, so it must be easy to find and read.
+- **School** — coursework and things learned.
+- **Achievements** — Steam/Xbox-style profile: total score at top, each achievement has a pixel badge, name, short description, and points. Covers all of life (game art, commissions, streaming, 3D printing, truck camper build, trips, dirt bike rides, etc.). Some can be "locked" with a hint as future goals. Optional popup the first time a visitor opens a folder ("Achievement Unlocked: Found the Art Folder").
+- **Field Journal** — photo folder for travel, camping, the truck camper build, dirt biking.
+- **My Corner** — favorite repos, games, and stuff Knoxler wants to share.
+- **Find Me** — contacts window with links to every account across the internet.
+- **Music Player** — Winamp-style retro player. **No tracks yet**: ship with an empty playlist and a "no tracks loaded" message. Only music Knoxler owns or has rights to may be added later.
+- **Recycle Bin** — looks normal, holds the first clue of the hidden key hunt.
+- **Frog assistant** — Clippy-style frog in the corner that pops up with tips ("Try opening the Art folder"). Later: gets creepy if poked too many times.
+
+Taskbar: start button, open-window buttons, clock, small mascot spot.
+
+## Hidden layer (later phase)
+
+A *Welcome to the Game*–style key hunt: hidden files and clues spread across the desktop, retro horror touches (glitches, rare creepy events). Recruiters should never need to touch it.
+
+## Must-haves for quality
+
+- **Quick View / Resume Mode** button always visible: one clean, plain page with projects, skills, resume, and contact links for busy recruiters.
+- **Settings window** with toggles to turn off CRT flicker and motion. Also respect the browser's `prefers-reduced-motion` setting automatically. No fast flashing ever.
+- Works on phones: on small screens the desktop becomes a simple, tappable icon grid.
+- Keyboard-usable windows and proper labels for screen readers.
+- Fast loading: small images, no huge libraries.
+- Content lives in data files (e.g. `/data/projects.json`, `/data/achievements.json`) so Knoxler can add things without editing code.
+
+## Tech decisions
+
+- Plain **HTML, CSS, and JavaScript**. No framework and no build step, to keep it simple and reduce dependencies.
+- Hosted on **GitHub Pages** from this repo, with the custom domain **knoxler.net**.
+- Comments: **giscus** (stores comments as GitHub Discussions on this repo; visitors sign in with GitHub; moderated from GitHub). Requires the repo to be public with Discussions turned on.
+
+## Security rules
+
+- Static site only: no server, no database, no user accounts.
+- No secrets, keys, or tokens anywhere in the repo.
+- Never put home address or phone number on the site. Contact by a dedicated site email and social links.
+- Strip GPS/location data (EXIF) from all photos before adding them.
+- External links use `rel="noopener noreferrer"`.
+- Never insert untrusted text with `innerHTML`; use `textContent`.
+- Add a Content Security Policy that only allows this site plus giscus.
+- Enable HTTPS enforcement in GitHub Pages settings, Dependabot alerts, and 2FA on the GitHub account.
+
+## Build phases
+
+1. **Static desktop** — CRT frame, static wallpaper placeholder, desktop icons, draggable windows, taskbar, Quick View, Settings. All art as placeholders.
+2. **Content** — fill windows from the data files: About, Projects, Games, Art, Commissions, Streams, School, Find Me, Achievements, Field Journal, My Corner.
+3. **Polish** — CRT flicker/boot animation, music player, frog assistant tips, giscus comments, custom domain.
+4. **Interactive** — layered parallax wallpaper, clickable wallpaper events, achievement popups.
+5. **Secrets** — key hunt, horror easter eggs, creepy frog.
