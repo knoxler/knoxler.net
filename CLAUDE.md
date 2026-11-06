@@ -120,7 +120,7 @@ Rules:
 
 1. **Static desktop** — CRT frame, static wallpaper placeholder, desktop icons, draggable windows, taskbar, Quick View, Settings. All art as placeholders.
 2. **Content** — fill windows from the data files: About, Projects, Games, Art, Commissions, Streams, School, Find Me, Achievements, Field Journal, My Corner.
-3. **Polish** — CRT flicker/boot animation, music player, frog assistant tips, giscus comments, custom domain.
+3. **Polish** — CRT flicker/boot animation ✅ (skippable, reduced-motion safe), frog assistant tips ✅ (tips in `data/frog-tips.json`); music player, giscus comments, custom domain still to do.
 4. **Interactive** — layered parallax wallpaper, clickable wallpaper events, achievement popups.
 5. **The Room** — the wasteland hideout around the CRT: desk, lamp (horror-mode on-ramp), radio, polaroids, sticky notes, shelf, Mountain-Time sky window, key-hunt keys. Hidden on phones; room art as labeled placeholders.
 6. **Secrets** — key hunt, horror easter eggs, creepy frog.

@@ -686,6 +686,145 @@ a {
   margin: 0;
 }
 
+/* ---------- CRT scanlines + flicker (Phase 3) ---------- */
+
+/* Static scanline texture over the whole screen (windows included).
+   Static = safe under reduced motion; the gentle flicker below only runs
+   when the user's settings allow it. */
+.crt-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 5000;
+  pointer-events: none;
+  opacity: 0.85;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(16, 10, 40, 0.09) 0px,
+    rgba(16, 10, 40, 0.09) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Gentle flicker: a slow opacity wobble (7s cycle, nothing under 300ms).
+   Gated on BOTH settings; the motion-off and prefers-reduced-motion rules
+   below kill any animation anyway, so no fast flashing is possible. */
+html[data-flicker="on"][data-motion="on"] .crt-scanlines {
+  animation: crt-flicker 7s ease-in-out infinite;
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.85; }
+  25% { opacity: 0.68; }
+  50% { opacity: 0.9; }
+  75% { opacity: 0.72; }
+}
+
+/* ---------- CRT power-on boot (Phase 3) ----------
+   Black screen -> bright line sweeps -> wash out to the desktop.
+   js/boot.js unhides and manages it; any key or click skips it. */
+.crt-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  background: #07070f;
+  animation: boot-fade 0.35s linear 0.9s forwards;
+}
+
+/* Skip: stop the keyframes and fade out quickly. */
+.crt-boot.boot-skipped,
+.crt-boot.boot-skipped * {
+  animation: none;
+}
+
+.crt-boot.boot-skipped {
+  transition: opacity 0.22s linear;
+  opacity: 0;
+}
+
+.boot-glow {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: #d9f3ff;
+  box-shadow: 0 0 26px 6px rgba(130, 220, 255, 0.8);
+  transform: scaleY(0);
+  animation: boot-glow 0.9s ease-in-out forwards;
+}
+
+.boot-label {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translateX(-50%);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: #59e6ff;
+  opacity: 0;
+  animation: boot-label 0.45s ease-out 0.4s forwards;
+}
+
+@keyframes boot-glow {
+  0% { transform: scaleY(0); opacity: 0; }
+  30% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes boot-label {
+  to { opacity: 1; }
+}
+
+@keyframes boot-fade {
+  to { opacity: 0; }
+}
+
+/* ---------- frog tips (Phase 3) ---------- */
+
+.frog {
+  cursor: pointer;
+}
+
+/* Once the real 64×64 sprite lands, drop the dashed placeholder frame. */
+.frog.has-asset {
+  border: 0;
+  background: transparent;
+}
+
+.frog-bubble {
+  position: absolute;
+  right: 12px;
+  bottom: calc(var(--taskbar-h) + 12px + 64px + 12px);
+  z-index: 4000;
+  max-width: 230px;
+  padding: 10px 12px;
+  background: var(--face-hi);
+  border: 2px solid var(--face-dk);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 rgba(34, 29, 56, 0.25);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+/* Little tail pointing at the frog */
+.frog-bubble::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  bottom: -8px;
+  width: 12px;
+  height: 12px;
+  background: var(--face-hi);
+  border-right: 2px solid var(--face-dk);
+  border-bottom: 2px solid var(--face-dk);
+  transform: rotate(45deg);
+}
+
 /* ---------- motion handling ---------- */
 
 html[data-motion="off"] *,

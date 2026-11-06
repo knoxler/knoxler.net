@@ -21,7 +21,7 @@ Layers render in the order above (sky at the back). The wallpaper placeholder hi
 
 ## Frog assistant — 64×64
 
-`frog.png` — idle frame. Talking frames later (Phase 3).
+`frog.png` — idle frame. Talking / creepy frames come in a later phase (Phase 6).
 
 ## The Room (Phase 5) — sizes TBD until the room layout is drawn
 

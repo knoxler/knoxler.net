@@ -14,8 +14,8 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
 | Phase | What | Status |
 |---|---|---|
 | **1. Static desktop** | CRT frame, placeholder wallpaper, desktop icons, draggable windows, taskbar, Quick View, Settings | ✅ Done |
-| **2. Content** | Every content window filled from `data/*.json`; Quick View filled | ✅ **Done (current)** |
-| 3. Polish | CRT boot animation, Music Player, frog tips, giscus comments, custom domain | ⬜ Not started |
+| **2. Content** | Every content window filled from `data/*.json`; Quick View filled | ✅ Done |
+| **3. Polish** | CRT boot animation ✅, flicker ✅, frog tips ✅ · Music Player, giscus comments, custom domain ⬜ | 🚧 **In progress (current)** |
 | 4. Interactive | Layered parallax wallpaper, clickable wallpaper, achievement popups | ⬜ Not started |
 | 5. The Room | Wasteland hideout around the CRT (lamp → horror mode, radio, polaroids, Mountain-Time sky) | ⬜ Not started |
 | 6. Secrets | Key hunt, horror easter eggs, creepy frog | ⬜ Not started |
@@ -31,6 +31,12 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
   - **Achievements** → a big total score at top (sum of **unlocked** points), grouped by Work / Art / Streaming / Life, locked ones dimmed with a hint.
 - **Quick View** (`quick.html`) — the clean one-page recruiter view, filled from the same data: projects, games (with role), recent reviews, skills, resume, contact.
 - **Music Player and Recycle Bin** still show "Coming soon" — *intentional*; their content lands in a later phase.
+
+### What's new in Phase 3 (so far)
+
+- **CRT boot animation** (`js/boot.js`) — a short power-on effect on every load (black screen → bright line → wash out, ~1.2s). Skippable with any key press or click. Skipped entirely when motion is off in Settings or the OS prefers reduced motion. Quick View (`quick.html`) never boots.
+- **CRT flicker + scanlines** — static scanline texture over the screen, plus a very slow (7s) gentle opacity wobble. Flicker is **on by default** (it's subtle), still toggleable in Settings, and always killed under `prefers-reduced-motion` / motion-off. No fast flashing.
+- **Frog assistant tips** (`js/frog.js`) — click the frog for a speech-bubble tip. Tips live in **`data/frog-tips.json`** (a plain array of strings — add your own there). Friendly for now; the creepy frog is Phase 6.
 
 ---
 
@@ -61,12 +67,15 @@ css/
 
 js/
   main.js             Desktop shell: window open/close/drag, taskbar, start menu, clock, asset probing
+  boot.js             CRT power-on boot (Phase 3)
+  frog.js             Frog assistant tips (Phase 3)
   lib.js              Shared helpers: load data, safe links, image fallback, card, viewer, error box
   render-<name>.js    One small file per window (about, projects, games, art, reviews, …)
   quick.js            Fills quick.html from the same data
 
 data/
   *.json              The content (one file per window)
+  frog-tips.json      Frog assistant tips (Phase 3) — a plain array of strings
   README.md           How to add/edit content — a non-coder guide
 
 assets/
@@ -105,15 +114,15 @@ Art is swappable by dropping a PNG into `assets/` with the exact name — **no c
 - **The achievements total is calculated**, not stored — it sums the points of the non-locked entries. Don't hard-code a total.
 - **Folder ids and data filenames don't always match:** `journal`→`field-journal.json`, `corner`→`my-corner.json`, `findme`→`find-me.json`. The mapping is `DATA_MAP` in `js/main.js`.
 - **Adding a brand-new window** touches five places: an icon `<button>` in `index.html`, an entry in the `FOLDERS` list in `js/main.js`, a `render-<id>.js` file, a `data/<name>.json` file, a `<script>` tag in `index.html`, and (only if id ≠ filename) a `DATA_MAP` entry.
-- **Motion is safe by default:** flicker ships off, and everything respects `prefers-reduced-motion` plus the Settings toggles. No fast flashing.
+- **Motion is safe by default:** flicker is on by default but slow and subtle (7s wobble), everything respects `prefers-reduced-motion` plus the Settings toggles, and no animation runs under motion-off. No fast flashing.
 - **CSP allows giscus** but giscus isn't wired up yet (that's Phase 3).
 
 ## What's next (Phase 3 — Polish)
 
+Done: CRT boot animation ✅, flicker + scanlines ✅, frog assistant tips ✅.
+
 Pick up here:
 
-1. **CRT boot animation / flicker** (respect reduced motion + Settings).
-2. **Music Player** window — Winamp-style, ships with an empty playlist and a "no tracks loaded" message (only music Knoxler owns/rights to may be added).
-3. **Frog assistant tips** — pop-up hints like "Try opening the Art folder."
-4. **giscus comments** — needs the repo **public with Discussions turned on**; visitors sign in with GitHub.
-5. **Custom domain** (knoxler.net) — wire up in GitHub Pages settings, plus HTTPS enforcement.
+1. **Music Player** window — Winamp-style, ships with an empty playlist and a "no tracks loaded" message (only music Knoxler owns/rights to may be added).
+2. **giscus comments** — needs the repo **public with Discussions turned on**; visitors sign in with GitHub.
+3. **Custom domain** (knoxler.net) — wire up in GitHub Pages settings, plus HTTPS enforcement.

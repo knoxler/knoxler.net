@@ -40,8 +40,10 @@
   }
 
   const settings = {
-    // Flicker ships in Phase 3; off is the safe default.
-    flicker: storedSettings && isOnOrOff(storedSettings.flicker) ? storedSettings.flicker : 'off',
+    // Phase 3: flicker is slow and subtle, so it ships ON. It is still
+    // auto-off under reduced motion (the motion default + CSS guards) and
+    // always toggleable in Settings.
+    flicker: storedSettings && isOnOrOff(storedSettings.flicker) ? storedSettings.flicker : 'on',
     // Respect the system reduced-motion preference until the user chooses.
     motion:
       storedSettings && isOnOrOff(storedSettings.motion)
@@ -180,7 +182,7 @@
     const note = document.createElement('p');
     note.className = 'coming-note';
     note.textContent =
-      'Flicker ships in Phase 3 — your choice is saved. ' +
+      'Choices are saved in this browser. ' +
       'Your system reduced-motion preference is respected automatically.';
     body.append(note);
     return body;

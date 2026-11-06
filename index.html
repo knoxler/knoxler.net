@@ -93,8 +93,10 @@
         </button>
       </div>
 
-      <!-- Frog assistant (tips arrive in Phase 3) -->
-      <div class="frog ph-box" data-asset="frog" aria-hidden="true">FROG — 64×64</div>
+      <!-- Frog assistant: click for a tip (tips in data/frog-tips.json) -->
+      <button type="button" class="frog ph-box" data-asset="frog" aria-label="Frog assistant — ask for a tip">
+        <span class="ph-name">FROG — 64×64</span>
+      </button>
 
       <!-- Taskbar: part of the fake desktop -->
       <nav class="taskbar" id="taskbar" aria-label="Taskbar">
@@ -121,6 +123,13 @@
 
       <!-- Windows open here -->
       <div class="windows" id="windows"></div>
+
+      <!-- CRT effects (Phase 3): static scanlines + power-on boot overlay -->
+      <div class="crt-scanlines" aria-hidden="true"></div>
+      <div class="crt-boot" id="crt-boot" hidden aria-hidden="true">
+        <div class="boot-glow" aria-hidden="true"></div>
+        <div class="boot-label">KNOX–98 READY</div>
+      </div>
     </div>
 
     <div class="crt-bezel-bottom" aria-hidden="true">KNOX–98</div>
@@ -140,5 +149,7 @@
   <script src="js/render-corner.js" defer></script>
   <script src="js/render-findme.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/boot.js" defer></script>
+  <script src="js/frog.js" defer></script>
 </body>
 </html>
