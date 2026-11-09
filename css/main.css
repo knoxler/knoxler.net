@@ -696,11 +696,11 @@ a {
   inset: 0;
   z-index: 5000;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
   background: repeating-linear-gradient(
     0deg,
-    rgba(16, 10, 40, 0.09) 0px,
-    rgba(16, 10, 40, 0.09) 1px,
+    rgba(16, 10, 40, 0.13) 0px,
+    rgba(16, 10, 40, 0.13) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -714,10 +714,63 @@ html[data-flicker="on"][data-motion="on"] .crt-scanlines {
 }
 
 @keyframes crt-flicker {
-  0%, 100% { opacity: 0.85; }
-  25% { opacity: 0.68; }
-  50% { opacity: 0.9; }
-  75% { opacity: 0.72; }
+  0%, 100% { opacity: 0.9; }
+  25% { opacity: 0.72; }
+  50% { opacity: 0.95; }
+  75% { opacity: 0.76; }
+}
+
+/* ---------- CRT static (Phase 3) ----------
+   A faint TV-grain layer over the whole screen (above desktop + windows).
+   The tile is generated noise (an inline SVG data URI — allowed by
+   img-src data:), so no art file is needed. It sits at very low opacity and
+   drifts in a few slow steps per second (steps() timing = no smooth smear,
+   no bright bursts, nothing fast). pointer-events: none keeps every click
+   passing through to the desktop.
+
+   Gated on BOTH settings, exactly like the flicker: only visible + moving
+   when flicker AND motion are on. The two hard-off rules below guarantee it
+   is completely gone (not just frozen) under motion-off and
+   prefers-reduced-motion. */
+.crt-static {
+  position: absolute;
+  inset: 0;
+  z-index: 5500; /* above scanlines (5000), below boot (10000) */
+  pointer-events: none;
+  opacity: 0; /* hidden unless explicitly enabled below */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  background-repeat: repeat;
+  mix-blend-mode: screen; /* grain lightens a touch, like real static */
+}
+
+html[data-flicker="on"][data-motion="on"] .crt-static {
+  opacity: 0.05;
+  animation: crt-static 1.2s step-end infinite;
+}
+
+/* Slow drift: step-end holds each position then jumps, so the grain ticks in
+   a few discrete steps (~3/sec, each held ~0.3s) — grain, not smooth motion,
+   and nothing fast or bright. */
+@keyframes crt-static {
+  0%   { background-position: 0 0; }
+  25%  { background-position: 42px 23px; }
+  50%  { background-position: 88px 61px; }
+  75%  { background-position: 21px 90px; }
+  100% { background-position: 0 0; }
+}
+
+/* Completely off (not just paused) when motion is off or the OS asks for it. */
+html[data-motion="off"] .crt-static {
+  opacity: 0;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-static {
+    opacity: 0 !important;
+    animation: none !important;
+  }
 }
 
 /* ---------- CRT power-on boot (Phase 3) ----------
