@@ -151,7 +151,7 @@
     heading.textContent = 'Coming soon';
     const note = document.createElement('p');
     note.className = 'coming-note';
-    note.textContent = 'Content for this window arrives in Phase 2.';
+    note.textContent = 'This window arrives in a later update.';
     body.append(heading, note);
     return body;
   }

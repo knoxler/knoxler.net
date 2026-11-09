@@ -43,6 +43,7 @@ When in doubt: copy an existing example entry, paste a new one right after it, a
 | `field-journal.json` | Travel / camping / truck / dirt bike photos | Copy one object in the `entries` list; set `title`, `image`, `note` |
 | `my-corner.json` | Favorite repos, games, things to share | Copy one object in the `things` list; set `title`, `note`, `url` |
 | `reviews.json` | Your horror game reviews | Copy one object in the `reviews` list; set `game`, `take`, `link`. `cover`, `rating`, and `date` are optional — leave them off if you don't have them |
+| `comments.json` | Setup for the comments at the bottom of the My Corner window | Special — usually you don't touch this. It holds the comment setup for the site (the "repo" and "category" names, plus two ID codes). While the two ID codes (`repoId` and `categoryId`) are blank, the window shows "Comments are coming soon." and no comments load. To turn comments on, you'll fill those two codes in here (you'll get them from a comments tool) — ask a coder for help with that one |
 
 ## Putting images where they belong
 

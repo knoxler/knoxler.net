@@ -423,6 +423,29 @@ a.link-internal::before {
   color: #8a80b5;
 }
 
+/* ---------- comments (giscus, My Corner) ----------
+   The CSP blocks the <style> tag giscus injects, so the frame's width is
+   set here instead. */
+
+.comments {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 2px solid #d8d2ee;
+}
+
+.comments-title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a3f78;
+}
+
+.giscus,
+.giscus-frame {
+  width: 100%;
+}
+
 /* ---------- Quick View fills ---------- */
 
 .quick-fill {

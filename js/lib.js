@@ -200,15 +200,18 @@
   };
 
   // ---------- data loading + error states ----------
+  // Accepts a data name with or without the ".json" suffix ("about" and
+  // "about.json" both load data/about.json — never about.json.json).
   K.loadJSON = function (name) {
-    return fetch('data/' + name + '.json', { headers: { Accept: 'application/json' } })
+    const file = String(name == null ? '' : name).replace(/\.json$/i, '') + '.json';
+    return fetch('data/' + file, { headers: { Accept: 'application/json' } })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
       .catch(function (err) {
         throw new Error(
-          'Could not read data/' + name + '.json (' + (err && err.message ? err.message : 'error') + ')'
+          'Could not read data/' + file + ' (' + (err && err.message ? err.message : 'error') + ')'
         );
       });
   };
@@ -251,5 +254,44 @@
   K.requestClose = function (container) {
     const win = container && container.closest ? container.closest('.window') : null;
     if (win) win.dispatchEvent(new CustomEvent('knox:close', { bubbles: true }));
+  };
+
+  // ---------- comments (giscus) ----------
+  // Config lives in data/comments.json (repo, category, repoId, categoryId).
+  // While either ID is blank the site shows "coming soon" and loads nothing
+  // from giscus. The giscus <style> tag is blocked by the CSP, so the frame
+  // is styled in css/content.css instead.
+  K.comments = function (root, term) {
+    const section = K.el('section', 'comments');
+    section.append(K.el('h3', 'comments-title', 'Comments'));
+    const box = K.el('div', 'comments-box');
+    box.append(K.el('p', 'loading', 'Loading…'));
+    section.append(box);
+    root.append(section);
+
+    K.loadJSON('comments.json')
+      .then(function (cfg) {
+        if (!cfg || !cfg.repoId || !cfg.categoryId) {
+          box.replaceChildren(K.el('p', 'empty-msg', 'Comments are coming soon.'));
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = 'https://giscus.app/client.js';
+        s.setAttribute('data-repo', cfg.repo || '');
+        s.setAttribute('data-repo-id', cfg.repoId);
+        s.setAttribute('data-category', cfg.category || '');
+        s.setAttribute('data-category-id', cfg.categoryId);
+        s.setAttribute('data-mapping', 'specific');
+        s.setAttribute('data-term', term);
+        s.setAttribute('data-strict', '1');
+        s.setAttribute('data-reactions-enabled', '1');
+        s.setAttribute('data-input-position', 'top');
+        s.setAttribute('data-theme', 'light');
+        s.setAttribute('data-language', 'en');
+        box.replaceChildren(s);
+      })
+      .catch(function () {
+        box.replaceChildren(K.errorBox('comments.json'));
+      });
   };
 })();
