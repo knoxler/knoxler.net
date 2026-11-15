@@ -1,4 +1,4 @@
-/* School window — from data/school.json:
+/* My Workbench window — from data/school.json:
    one card per course with a short note about what was learned. */
 (() => {
   'use strict';

@@ -1,4 +1,4 @@
-/* About Me window — text-document layout from data/about.json:
+/* README.txt window — text-document layout from data/about.json:
    intro paragraphs, a skills row, and a resume (PDF) link. */
 (() => {
   'use strict';

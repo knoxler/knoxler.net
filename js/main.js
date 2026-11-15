@@ -77,21 +77,21 @@
     });
   }
 
-  // ---------- folders (titles stay plain and obvious) ----------
+  // ---------- folders (90s-desktop flavored titles) ----------
   const FOLDERS = [
-    { id: 'about', title: 'About Me' },
-    { id: 'projects', title: 'Projects' },
+    { id: 'about', title: 'README.txt' },
+    { id: 'projects', title: 'My Documents' },
     { id: 'games', title: 'Games' },
-    { id: 'art', title: 'Art' },
-    { id: 'commissions', title: 'Commissions' },
-    { id: 'streams', title: 'Streams' },
-    { id: 'reviews', title: 'Reviews' },
-    { id: 'school', title: 'School' },
-    { id: 'achievements', title: 'Achievements' },
-    { id: 'journal', title: 'Field Journal' },
-    { id: 'corner', title: 'My Corner' },
-    { id: 'findme', title: 'Find Me' },
-    { id: 'music', title: 'Music Player' },
+    { id: 'art', title: 'My Pictures' },
+    { id: 'commissions', title: 'Order Form' },
+    { id: 'streams', title: 'knoxlerTV' },
+    { id: 'reviews', title: 'Guestbook' },
+    { id: 'school', title: 'My Workbench' },
+    { id: 'achievements', title: 'Trophy Case' },
+    { id: 'journal', title: 'Travel Log' },
+    { id: 'corner', title: 'Junk Drawer' },
+    { id: 'findme', title: 'Weblinks' },
+    { id: 'music', title: 'Jukebox' },
     { id: 'recycle', title: 'Recycle Bin' },
   ];
 
@@ -370,7 +370,7 @@
     if (renderFn && dataName) {
       K.renderInto(container, dataName, renderFn);
     } else {
-      // No content yet (Music Player, Recycle Bin) — keep the coming-soon body.
+      // No content yet (Jukebox, Recycle Bin) — keep the coming-soon body.
       container.append(comingSoonBody());
     }
     createWindow(folder.id, folder.title, container);

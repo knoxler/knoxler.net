@@ -1,4 +1,4 @@
-/* Find Me window — from data/find-me.json:
+/* Weblinks window — from data/find-me.json:
    a site email plus a grid of links to every account.
    No home address or phone number, per the security rules. */
 (() => {

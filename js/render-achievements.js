@@ -1,4 +1,4 @@
-/* Achievements window — Steam/Xbox-style profile from data/achievements.json.
+/* Trophy Case window — Steam/Xbox-style profile from data/achievements.json.
    Big total (sum of unlocked points), grouped by category, locked ones dimmed. */
 (() => {
   'use strict';

@@ -1,4 +1,4 @@
-/* Streams window — from data/streams.json:
+/* knoxlerTV window — from data/streams.json:
    intro line, channel links (Twitch / YouTube), and favorite clips. */
 (() => {
   'use strict';

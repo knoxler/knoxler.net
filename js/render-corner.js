@@ -1,4 +1,4 @@
-/* My Corner window — from data/my-corner.json:
+/* Junk Drawer window — from data/my-corner.json:
    a list of favorite repos, games, and other things worth sharing. */
 (() => {
   'use strict';

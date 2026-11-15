@@ -112,7 +112,7 @@
     return card;
   };
 
-  // ---------- image viewer (Art + Field Journal) ----------
+  // ---------- image viewer (My Pictures + Travel Log) ----------
   // cfg: { image, alt, note } — the field names in each data entry.
   K.viewer = function (root, items, cfg) {
     cfg = cfg || {};

@@ -32,9 +32,9 @@ The room the CRT sits in (salvaged wasteland hideout). File names below are sugg
 | `room-wall.png` | Hideout wall / background |
 | `room-desk.png` | The desk |
 | `room-lamp-on.png` / `room-lamp-off.png` | Desk lamp states (off = lights out, horror mode) |
-| `room-radio.png` | Old radio (opens the Music Player) |
-| `room-polaroids.png` | Polaroid stack (opens the Field Journal) |
-| `room-sticky-notes.png` | Sticky notes on the bezel (opens Find Me) |
+| `room-radio.png` | Old radio (opens the Jukebox) |
+| `room-polaroids.png` | Polaroid stack (opens the Travel Log) |
+| `room-sticky-notes.png` | Sticky notes on the bezel (opens Weblinks) |
 | `room-shelf.png` | Shelf with the 3D printed figure |
 | `room-dirtbike.png` | Toy dirt bike |
 | `room-window-sunrise.png` | Window sky — sunrise |
@@ -54,5 +54,5 @@ All room art starts as labeled placeholders. The room is hidden on phones.
 ## Rules
 
 - PNG format. `image-rendering: pixelated` is applied, so pixel art stays crisp.
-- Strip EXIF/location data from photos before adding (Field Journal, Phase 2).
+- Strip EXIF/location data from photos before adding (Travel Log, Phase 2).
 - Only Knoxler's own art — no logos, sprites, or assets from other games or companies.

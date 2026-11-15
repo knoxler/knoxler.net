@@ -1,4 +1,4 @@
-/* Reviews window — one card per review from data/reviews.json.
+/* Guestbook window — one card per review from data/reviews.json.
    Optional cover image and rating; each links out to the full review. */
 (() => {
   'use strict';

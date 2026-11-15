@@ -1,4 +1,4 @@
-/* Projects window — one card per project from data/projects.json. */
+/* My Documents window — one card per project from data/projects.json. */
 (() => {
   'use strict';
   const K = (window.Knox = window.Knox || { render: {} });

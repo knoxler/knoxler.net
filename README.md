@@ -15,7 +15,7 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
 |---|---|---|
 | **1. Static desktop** | CRT frame, placeholder wallpaper, desktop icons, draggable windows, taskbar, Quick View, Settings | ✅ Done |
 | **2. Content** | Every content window filled from `data/*.json`; Quick View filled | ✅ Done |
-| **3. Polish** | CRT boot animation ✅, flicker ✅, frog tips ✅, giscus code ✅ (needs IDs) · Music Player (skipped for now), custom domain ⬜ | 🚧 **In progress (current)** |
+| **3. Polish** | CRT boot animation ✅, flicker ✅, frog tips ✅, giscus code ✅ (needs IDs) · Jukebox (skipped for now), custom domain ⬜ | 🚧 **In progress (current)** |
 | 4. Interactive | Layered parallax wallpaper, clickable wallpaper, achievement popups | ⬜ Not started |
 | 5. The Room | Wasteland hideout around the CRT (lamp → horror mode, radio, polaroids, Mountain-Time sky) | ⬜ Not started |
 | 6. Secrets | Key hunt, horror easter eggs, creepy frog | ⬜ Not started |
@@ -23,14 +23,14 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
 ### What's built (Phases 1–2)
 
 - **The whole desktop:** monitor, 14 desktop icons, windows you can open / close / minimize / drag, taskbar, start menu, live clock, and a **Settings** window (toggle CRT flicker + motion; respects the browser's `prefers-reduced-motion`).
-- **Every content window reads from its JSON file** — no hard-coded text:
-  - About, Commissions, Streams, School, My Corner, Find Me → clean simple layouts.
-  - **Projects / Games** → cards (screenshot, role, tech chips, description, link buttons); Games can be flagged **"coming soon."**
-  - **Art / Field Journal** → an image viewer (prev/next buttons, **arrow keys** to move, **Esc** to close).
-  - **Reviews** → cards with optional cover + rating badge, each linking to the full review.
-  - **Achievements** → a big total score at top (sum of **unlocked** points), grouped by Work / Art / Streaming / Life, locked ones dimmed with a hint.
+- **Every content window reads from its JSON file** — no hard-coded text (window names below are the 90s-flavored desktop labels):
+  - README.txt, Order Form, knoxlerTV, My Workbench, Junk Drawer, Weblinks → clean simple layouts.
+  - **My Documents / Games** → cards (screenshot, role, tech chips, description, link buttons); Games can be flagged **"coming soon."**
+  - **My Pictures / Travel Log** → an image viewer (prev/next buttons, **arrow keys** to move, **Esc** to close).
+  - **Guestbook** → cards with optional cover + rating badge, each linking to the full review.
+  - **Trophy Case** → a big total score at top (sum of **unlocked** points), grouped by Work / Art / Streaming / Life, locked ones dimmed with a hint.
 - **Quick View** (`quick.html`) — the clean one-page recruiter view, filled from the same data: projects, games (with role), recent reviews, skills, resume, contact.
-- **Music Player and Recycle Bin** still show "Coming soon" — *intentional*. The Music Player is skipped for now; both land in a later phase.
+- **Jukebox and Recycle Bin** still show "Coming soon" — *intentional*. The Jukebox is skipped for now; both land in a later phase.
 
 ### What's new in Phase 3 (so far)
 
@@ -38,8 +38,8 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
 - **CRT flicker + scanlines** — static scanline texture over the screen, plus a very slow (7s) gentle opacity wobble. Flicker is **on by default** (it's subtle), still toggleable in Settings, and always killed under `prefers-reduced-motion` / motion-off. No fast flashing.
 - **CRT TV static** (`css/main.css`) — a faint moving grain layer over the desktop and windows. It's a **generated noise tile** (an inline SVG data URI — no art file, allowed by the CSP's `img-src data:`) drifting in a few slow steps per second at very low opacity. `pointer-events: none`, so it never blocks clicks. It's gated on the **same** flicker + motion Settings toggles and is completely off (not just frozen) under motion-off / `prefers-reduced-motion`. It only exists on the desktop (`index.html`) — **Quick View stays clean with no CRT effects.**
 - **Frog assistant tips** (`js/frog.js`) — click the frog for a speech-bubble tip. Tips live in **`data/frog-tips.json`** (a plain array of strings — add your own there). Friendly for now; the creepy frog is Phase 6.
-- **Giscus comments** (`K.comments` in `js/lib.js`, at the bottom of the **My Corner** window) — the code is done. It reads config from **`data/comments.json`** and, while `repoId`/`categoryId` are still blank, shows "Comments are coming soon." and loads nothing from giscus. To turn comments on: fill both IDs in that file (from the giscus.app embed generator) and turn **Discussions** on in the repo (which needs to be public). The CSP already allows giscus; because it blocks the style tag giscus adds, the frame's `width: 100%` lives in `css/content.css`.
-- **Music Player** — skipped for now; the window keeps showing "Coming soon."
+- **Giscus comments** (`K.comments` in `js/lib.js`, at the bottom of the **Junk Drawer** window) — the code is done. It reads config from **`data/comments.json`** and, while `repoId`/`categoryId` are still blank, shows "Comments are coming soon." and loads nothing from giscus. To turn comments on: fill both IDs in that file (from the giscus.app embed generator) and turn **Discussions** on in the repo (which needs to be public). The CSP already allows giscus; because it blocks the style tag giscus adds, the frame's `width: 100%` lives in `css/content.css`.
+- **Jukebox** — skipped for now; the window keeps showing "Coming soon."
 
 ---
 
@@ -79,7 +79,7 @@ js/
 data/
   *.json              The content (one file per window)
   frog-tips.json      Frog assistant tips (Phase 3) — a plain array of strings
-  comments.json       Giscus comment config for My Corner (repo + category IDs)
+  comments.json       Giscus comment config for the Junk Drawer window (repo + category IDs)
   README.md           How to add/edit content — a non-coder guide
 
 assets/
@@ -120,14 +120,14 @@ Art is swappable by dropping a PNG into `assets/` with the exact name — **no c
 - **Adding a brand-new window** touches five places: an icon `<button>` in `index.html`, an entry in the `FOLDERS` list in `js/main.js`, a `render-<id>.js` file, a `data/<name>.json` file, a `<script>` tag in `index.html`, and (only if id ≠ filename) a `DATA_MAP` entry.
 - **Motion is safe by default:** flicker is on by default but slow and subtle (7s wobble), everything respects `prefers-reduced-motion` plus the Settings toggles, and no animation runs under motion-off. No fast flashing.
 - **CSP and giscus:** the CSP allows the giscus script + frame, but blocks the `<style>` tag giscus injects — so the `.giscus`/`.giscus-frame` width styling lives in `css/content.css`. Don't "fix" the CSP to allow styles; keep it strict.
-- **Giscus is gated on `data/comments.json`:** while `repoId`/`categoryId` are blank, My Corner shows "Comments are coming soon." and no giscus script loads. Fill both IDs and enable Discussions to switch it on.
+- **Giscus is gated on `data/comments.json`:** while `repoId`/`categoryId` are blank, Junk Drawer shows "Comments are coming soon." and no giscus script loads. Fill both IDs and enable Discussions to switch it on.
 
 ## What's next (Phase 3 — Polish)
 
-Done: CRT boot animation ✅, flicker + scanlines ✅, frog assistant tips ✅, giscus comments code ✅ (still needs its IDs). Skipped for now: Music Player.
+Done: CRT boot animation ✅, flicker + scanlines ✅, frog assistant tips ✅, giscus comments code ✅ (still needs its IDs). Skipped for now: Jukebox.
 
 Pick up here:
 
-1. **giscus comments — switch on:** the code is done and reads `data/comments.json`. Fill in `repoId` and `categoryId` (from the giscus.app embed generator) and make sure the repo is **public with Discussions turned on**; visitors sign in with GitHub. Until then, My Corner shows "Comments are coming soon."
+1. **giscus comments — switch on:** the code is done and reads `data/comments.json`. Fill in `repoId` and `categoryId` (from the giscus.app embed generator) and make sure the repo is **public with Discussions turned on**; visitors sign in with GitHub. Until then, Junk Drawer shows "Comments are coming soon."
 2. **Custom domain** (knoxler.net) — wire up in GitHub Pages settings, plus HTTPS enforcement.
-3. **Music Player** window (later) — Winamp-style, ships with an empty playlist and a "no tracks loaded" message (only music Knoxler owns/rights to may be added).
+3. **Jukebox** window (later) — Winamp-style, ships with an empty playlist and a "no tracks loaded" message (only music Knoxler owns/rights to may be added).

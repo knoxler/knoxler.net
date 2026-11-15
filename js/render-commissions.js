@@ -1,4 +1,4 @@
-/* Commissions window — from data/commissions.json:
+/* Order Form window — from data/commissions.json:
    intro text, example pieces, and an off-site contact link.
    Payments happen off-site; the site never takes payment details. */
 (() => {

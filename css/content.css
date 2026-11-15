@@ -59,7 +59,7 @@
   font-size: 14px;
 }
 
-/* ---------- generic card (Projects, Games, Commissions, …) ---------- */
+/* ---------- generic card (My Documents, Games, Order Form, …) ---------- */
 
 .card {
   position: relative;
@@ -218,7 +218,7 @@ a.link-internal::before {
   padding: 14px 10px;
 }
 
-/* ---------- image viewer (Art, Field Journal) ---------- */
+/* ---------- image viewer (My Pictures, Travel Log) ---------- */
 
 .viewer {
   display: flex;
@@ -423,7 +423,7 @@ a.link-internal::before {
   color: #8a80b5;
 }
 
-/* ---------- comments (giscus, My Corner) ----------
+/* ---------- comments (giscus, Junk Drawer) ----------
    The CSP blocks the <style> tag giscus injects, so the frame's width is
    set here instead. */
 

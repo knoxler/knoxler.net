@@ -1,5 +1,5 @@
-/* Field Journal window — image viewer over data/field-journal.json.
-   Same prev/next + arrow keys + Esc behavior as the Art viewer. */
+/* Travel Log window — image viewer over data/field-journal.json.
+   Same prev/next + arrow keys + Esc behavior as the My Pictures viewer. */
 (() => {
   'use strict';
   const K = (window.Knox = window.Knox || { render: {} });
