@@ -24,7 +24,7 @@ The full plan, art direction, and rules live in **[CLAUDE.md](CLAUDE.md)**. Read
 
 - **The whole desktop:** monitor, 14 desktop icons, windows you can open / close / minimize / drag, taskbar, start menu, live clock, and a **Settings** window (toggle CRT flicker + motion; respects the browser's `prefers-reduced-motion`).
 - **Every content window reads from its JSON file** — no hard-coded text (window names below are the 90s-flavored desktop labels):
-  - README.txt, Order Form, knoxlerTV, My Workbench, Junk Drawer, Weblinks → clean simple layouts.
+  - README.txt, Order Form, knoxlerTV, My School, Junk Drawer, Weblinks → clean simple layouts.
   - **My Documents / Games** → cards (screenshot, role, tech chips, description, link buttons); Games can be flagged **"coming soon."**
   - **My Pictures / Travel Log** → an image viewer (prev/next buttons, **arrow keys** to move, **Esc** to close).
   - **Guestbook** → cards with optional cover + rating badge, each linking to the full review.

@@ -86,7 +86,7 @@
     { id: 'commissions', title: 'Order Form' },
     { id: 'streams', title: 'knoxlerTV' },
     { id: 'reviews', title: 'Guestbook' },
-    { id: 'school', title: 'My Workbench' },
+    { id: 'school', title: 'My School' },
     { id: 'achievements', title: 'Trophy Case' },
     { id: 'journal', title: 'Travel Log' },
     { id: 'corner', title: 'Junk Drawer' },

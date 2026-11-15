@@ -55,7 +55,7 @@ Display names below are what appears on the desktop and in window titles; the in
 - **Order Form** (commissions) — example pieces, what's offered, how to reach out. Payments handled off-site (Ko-fi or VGen link). The site never touches payment info.
 - **knoxlerTV** (streams) — Twitch and YouTube channels and favorite clips. Knoxler is a horror streamer, so this window leans into that (horror-themed styling, favorite horror streams/clips).
 - **Guestbook** (reviews) — Knoxler's horror game reviews and coverage as a creator on Keymailer. Each review gets a card (game, short take, link to the full review or VOD). This is professional work: it shows Knoxler's eye for games and the relationships with studios, so it must be easy to find and read.
-- **My Workbench** (school) — coursework, school and general projects, and the code/repos behind them — a place to point at work Knoxler's proud of.
+- **My School** (school) — coursework, things learned, and school projects.
 - **Trophy Case** (achievements) — Steam/Xbox-style profile: total score at top, each achievement has a pixel badge, name, short description, and points. Covers all of life (game art, commissions, streaming, 3D printing, truck camper build, trips, dirt bike rides, etc.). Some can be "locked" with a hint as future goals. Optional popup the first time a visitor opens a folder ("Achievement Unlocked: Found the My Pictures Folder").
 - **Travel Log** (field journal) — photo folder for travel, camping, the truck camper build, dirt biking.
 - **Junk Drawer** (my corner) — favorite repos, games, and stuff Knoxler wants to share.
@@ -121,7 +121,7 @@ Rules:
 ## Build phases
 
 1. **Static desktop** — CRT frame, static wallpaper placeholder, desktop icons, draggable windows, taskbar, Quick View, Settings. All art as placeholders.
-2. **Content** — fill windows from the data files: README.txt, My Documents, Games, My Pictures, Order Form, knoxlerTV, Guestbook, My Workbench, Trophy Case, Travel Log, Junk Drawer, Weblinks.
+2. **Content** — fill windows from the data files: README.txt, My Documents, Games, My Pictures, Order Form, knoxlerTV, Guestbook, My School, Trophy Case, Travel Log, Junk Drawer, Weblinks.
 3. **Polish** — CRT flicker + faint TV static ✅ (both skippable, reduced-motion safe; the static is a generated noise tile in `css/main.css`, gated on the same flicker + motion toggles and never shown on Quick View), boot animation ✅ (skippable, reduced-motion safe), frog assistant tips ✅ (tips in `data/frog-tips.json`), giscus comments ✅ (wired at the bottom of Junk Drawer; config in `data/comments.json` — still needs `repoId`/`categoryId` filled in and the repo's Discussions enabled). Jukebox is skipped for now (stays "Coming soon"); custom domain still to do.
 4. **Interactive** — layered parallax wallpaper, clickable wallpaper events, achievement popups.
 5. **The Room** — the wasteland hideout around the CRT: desk, lamp (horror-mode on-ramp), radio, polaroids, sticky notes, shelf, Mountain-Time sky window, key-hunt keys. Hidden on phones; room art as labeled placeholders.
