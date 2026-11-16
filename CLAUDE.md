@@ -13,6 +13,7 @@ It has two jobs that must never fight each other:
 ## Art direction
 
 - Style: 90s retro desktop (Windows 98, but way better), pastel + neon colors, light post-apocalyptic "salvaged terminal" flavor (think Fallout / Stalker / Metro mood). Horror is a core part of who Knoxler is (horror streamer and horror game reviewer), so retro/analog horror shows up openly in the knoxlerTV and Guestbook windows and heavily in the hidden layer, while the main desktop stays welcoming and easy to use.
+- The CRT monitor casing is a **light warm putty grey** (molded-plastic top-to-bottom gradient, mid-grey outer border, dark screen bezel kept so the glass still reads as inset) — a deliberate "salvaged 90s monitor" choice, not the default lilac. Exact colors live in `css/main.css` (`.crt`).
 - The wasteland vibe is **flavor only** (visuals, sounds, secrets). Icon and window names use 90s-desktop flavor (README.txt, My Documents, Order Form, etc.) but must stay instantly understandable. Internal ids and data files keep their plain names (about, my-corner, field-journal, …).
 - **All art is Knoxler's own.** Never use logos, sprites, or assets from other games or companies.
 - **Every art spot starts as a placeholder**: a box with a dashed border showing the asset name and exact pixel size (e.g. `WALLPAPER — 480×270`). Art must be swappable by replacing a file in `/assets/`, with no code changes.
