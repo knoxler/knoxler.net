@@ -27,7 +27,7 @@ It has two jobs that must never fight each other:
 | Wallpaper — mountains layer | 480×270 | Transparent PNG |
 | Wallpaper — midground layer | 480×270 | Abandoned gas station, neon sign. Transparent PNG |
 | Wallpaper — foreground layer | 480×270 | Fence, cactus, tumbleweed. Transparent PNG |
-| Desktop icons | 32×32 each | One per desktop item |
+| Desktop icons | 32×32 each | 8 of 14 done (streams, reviews, school, achievements, journal, junk drawer, weblinks, recycle). Still needed: about, projects, games, art, commissions, music |
 | Frog assistant sprite | 64×64 | Idle + talking frames later |
 | CRT monitor frame | TBD | Bezel around the screen |
 | Achievement badges | 32×32 each | One per achievement |
